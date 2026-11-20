@@ -1,4 +1,4 @@
-package com.ekincare.onsitehealthcamp
+package com.ekincare.partner
 
 import android.net.Uri
 import android.webkit.GeolocationPermissions

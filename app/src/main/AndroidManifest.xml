@@ -26,10 +26,9 @@
         android:theme="@style/Theme.OnsiteHealthCamp">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".WebAppActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|uiMode"
             android:exported="true"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

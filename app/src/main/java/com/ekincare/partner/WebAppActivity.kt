@@ -1,4 +1,4 @@
-package com.ekincare.onsitehealthcamp
+package com.ekincare.partner
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -27,7 +27,7 @@ import androidx.core.view.WindowInsetsCompat
  *
  * Permissions are only asked when the page needs them, never at launch.
  */
-class MainActivity : ComponentActivity() {
+class WebAppActivity : ComponentActivity() {
 
     private lateinit var webView: WebView
     private var pageReady = false

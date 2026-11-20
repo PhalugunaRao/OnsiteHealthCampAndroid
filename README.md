@@ -11,7 +11,7 @@ permission bridge to the page.
 |---|---|
 | Store listing (App Store / Play) | ekincare Partner |
 | Home screen (under the icon) | ekincare Partner |
-| Bundle / application ID | `com.ekincare.onsitehealthcamp` (never changes) |
+| Application ID (Play package name) | `com.ekincare.partner` (permanent once uploaded) |
 
 ## Requirements
 
@@ -30,7 +30,7 @@ permission bridge to the page.
 
 ## Which URL loads
 
-**Only edit `app/src/main/java/com/ekincare/onsitehealthcamp/AppConfig.kt`:**
+**Only edit `app/src/main/java/com/ekincare/partner/AppConfig.kt`:**
 
 | Build | URL |
 |---|---|
@@ -39,7 +39,7 @@ permission bridge to the page.
 
 Release builds always load production, so a test URL cannot ship by accident.
 
-## What the native side does (`MainActivity.kt`)
+## What the native side does (`WebAppActivity.kt`)
 
 - **Camera / file upload** — WebView ignores `<input type="file">` by default.
   `onShowFileChooser` handles it:

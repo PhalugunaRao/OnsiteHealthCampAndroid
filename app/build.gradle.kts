@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.ekincare.onsitehealthcamp"
+    namespace = "com.ekincare.partner"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.ekincare.onsitehealthcamp"
+        applicationId = "com.ekincare.partner"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

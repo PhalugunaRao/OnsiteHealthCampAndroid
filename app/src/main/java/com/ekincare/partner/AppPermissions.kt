@@ -1,4 +1,4 @@
-package com.ekincare.onsitehealthcamp
+package com.ekincare.partner
 
 import android.Manifest
 import android.app.AlertDialog
