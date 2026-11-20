@@ -32,11 +32,21 @@ class AppChromeClient(
     }
 }
 
-/** Navigation: keep the app's host inside, hand everything else to the system. */
-class AppWebViewClient(private val bridge: NativeBridge) : WebViewClient() {
+/**
+ * Navigation: keep the app's host inside, hand everything else to the system.
+ * [onPageReady] fires when a page (or the offline page) has finished loading.
+ */
+class AppWebViewClient(
+    private val bridge: NativeBridge,
+    private val onPageReady: () -> Unit,
+) : WebViewClient() {
 
     override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
         bridge.onPageStarted(url)
+    }
+
+    override fun onPageFinished(view: WebView, url: String?) {
+        onPageReady()
     }
 
     override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {

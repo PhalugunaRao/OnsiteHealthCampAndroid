@@ -1,9 +1,14 @@
 <resources>
-    <style name="Theme.OnsiteHealthCamp" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="Base.Theme.OnsiteHealthCamp" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+    <!-- Android 8-11: logo on the startup window background (Android 12+: values-v31). -->
+    <style name="Theme.OnsiteHealthCamp" parent="Base.Theme.OnsiteHealthCamp">
+        <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 </resources>

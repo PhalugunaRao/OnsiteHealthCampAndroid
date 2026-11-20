@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OnsiteHealthCamp</string>
+    <string name="app_name">ekincare Partner</string>
 
     <!-- Shown before the system dialog when a permission granted earlier ("Only this time") is asked again. -->
     <string name="permission_camera">Camera</string>
@@ -9,7 +9,7 @@
 
     <!-- Camera denied from a photo tile. -->
     <string name="camera_needed_title">Camera needed</string>
-    <string name="camera_needed_message">OnsiteHealthCamp needs the camera to take camp photos. Allow it, then tap the photo again.</string>
+    <string name="camera_needed_message">ekincare Partner needs the camera to take camp photos. Allow it, then tap the photo again.</string>
     <string name="camera_off_title">Camera is turned off</string>
     <string name="camera_off_message">Open Settings → Permissions → Camera → Allow, then come back and tap the photo again.</string>
 

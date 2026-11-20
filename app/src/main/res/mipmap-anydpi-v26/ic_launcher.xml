@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Artwork: ekincare Partner logo (drawable-nodpi/ic_launcher_logo.png, 960px).
+     Launchers mask the icon to a circle / squircle and only the centre 66dp of 108dp is
+     guaranteed visible, so the logo is inset to keep the "Partner" text inside that zone. -->
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
     <background android:drawable="@android:color/white" />
     <foreground>
-        <inset android:drawable="@drawable/ic_logo" android:inset="18%" />
+        <inset android:drawable="@drawable/ic_launcher_logo" android:inset="18%" />
     </foreground>
 </adaptive-icon>

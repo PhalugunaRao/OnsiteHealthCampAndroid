@@ -3,6 +3,8 @@ package com.ekincare.onsitehealthcamp
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.view.ViewTreeObserver
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.FrameLayout
@@ -28,6 +30,7 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : ComponentActivity() {
 
     private lateinit var webView: WebView
+    private var pageReady = false
 
     // Created at construction: FileChooser and LocationPrompt register activity-result launchers.
     private val permissions = AppPermissions(this)
@@ -46,6 +49,7 @@ class MainActivity : ComponentActivity() {
 
         webView = WebView(this)
         setContentView(edgeToEdgeContainer(webView))
+        keepSplashUntilPageReady()
         configureWebView()
 
         onBackPressedDispatcher.addCallback(this) {
@@ -94,6 +98,31 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    /**
+     * The splash (Android 12+ system splash, or the logo window background on 8-11) only
+     * stays until the activity draws its first frame, which happens in a few hundred ms —
+     * long before the web page has loaded, so a kill-and-reopen showed a blank white
+     * WebView instead of the logo. Hold the first frame until the page has loaded, capped
+     * so a slow or offline start never hangs on the logo.
+     */
+    private fun keepSplashUntilPageReady() {
+        val content = findViewById<View>(android.R.id.content)
+        content.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
+            override fun onPreDraw(): Boolean {
+                if (!pageReady) return false
+                content.viewTreeObserver.removeOnPreDrawListener(this)
+                return true
+            }
+        })
+        content.postDelayed(::showPage, SPLASH_MAX_MS)
+    }
+
+    private fun showPage() {
+        if (pageReady) return
+        pageReady = true
+        findViewById<View>(android.R.id.content).invalidate()
+    }
+
     @SuppressLint("SetJavaScriptEnabled")
     private fun configureWebView() {
         WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG) // chrome://inspect
@@ -109,7 +138,7 @@ class MainActivity : ComponentActivity() {
             textZoom = (resources.configuration.fontScale * 100).toInt().coerceIn(100, MAX_TEXT_ZOOM)
             userAgentString = "$userAgentString OnsiteHealthCamp-Android/${BuildConfig.VERSION_NAME}"
         }
-        webView.webViewClient = AppWebViewClient(bridge)
+        webView.webViewClient = AppWebViewClient(bridge, onPageReady = ::showPage)
         webView.webChromeClient = AppChromeClient(fileChooser, locationPrompt)
         bridge.attach(webView)
     }
@@ -120,5 +149,8 @@ class MainActivity : ComponentActivity() {
 
         // ponytail: 130% is where 10-11px labels in fixed tiles start to wrap; raise after a layout pass.
         const val MAX_TEXT_ZOOM = 130
+
+        // Longest the splash waits for the page before showing whatever WebView has.
+        const val SPLASH_MAX_MS = 6_000L
     }
 }

@@ -1,0 +1,7 @@
+<resources>
+    <!-- Android 12+: system splash screen with the ekincare Partner logo. -->
+    <style name="Theme.OnsiteHealthCamp" parent="Base.Theme.OnsiteHealthCamp">
+        <item name="android:windowSplashScreenBackground">@android:color/white</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+    </style>
+</resources>

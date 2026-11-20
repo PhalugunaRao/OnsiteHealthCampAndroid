@@ -5,6 +5,14 @@ One Kotlin activity hosts a `WebView` that loads the web app; native code only c
 a WebView cannot do on its own: camera/file upload, location permission, and a small
 permission bridge to the page.
 
+## App name
+
+| Where | Name |
+|---|---|
+| Store listing (App Store / Play) | ekincare Partner |
+| Home screen (under the icon) | ekincare Partner |
+| Bundle / application ID | `com.ekincare.onsitehealthcamp` (never changes) |
+
 ## Requirements
 
 - Android Studio (or JDK 17+ and the Android SDK)
