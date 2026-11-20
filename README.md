@@ -22,7 +22,7 @@ permission bridge to the page.
 
 ## Which URL loads
 
-Set in `app/build.gradle.kts`:
+**Only edit `app/src/main/java/com/ekincare/onsitehealthcamp/AppConfig.kt`:**
 
 | Build | URL |
 |---|---|

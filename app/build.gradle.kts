@@ -13,8 +13,6 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0.0"
-        // Release builds always load prod.
-        buildConfigField("String", "WEB_URL", "\"https://onsite-providers.ekincare.com\"")
     }
 
     buildFeatures {
@@ -22,10 +20,6 @@ android {
     }
 
     buildTypes {
-        debug {
-            // Test build: OnsiteApt PR preview (Amplify). Change per PR being tested.
-            buildConfigField("String", "WEB_URL", "\"https://pr-13.d1fle6jimql6gu.amplifyapp.com\"")
-        }
         release {
             isMinifyEnabled = false
         }
